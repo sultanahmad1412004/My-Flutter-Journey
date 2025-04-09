@@ -13,7 +13,7 @@ The **Contact Book App** is a Flutter project built to manage and view contacts 
 
 ## 📝 Update Log
 
-### 🔖 Version 2.0.0
+### 🔖 Version 1.1.0
 - Added **Search Bar** to quickly find contacts.
 - Implemented **Alphabetical Sorting** of contact list.
 - Created a new **Contact Detail Screen** (`contactdetail.dart`) to view full info.
