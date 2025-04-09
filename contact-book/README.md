@@ -1,57 +1,87 @@
-# Contact Book App - Flutter Project
+# 📱 Contact Book App – Flutter Project
 
-> **Note**: This project is still a work in progress. It is not fully complete, and I will continue to make updates to improve and add more features in the future. Whenever an update is made, I will mention the changes along with the date so that you can easily track the progress and understand how this app evolves step by step as I’m in the learning phase of Flutter.
-
-## Overview
-
-The Contact Book app is a dynamic Flutter project designed to help manage and view contacts. The app allows users to add, store, and display contact details like names, phone numbers, and addresses. The app’s structure and features may evolve over time, with new screens, functionalities, and improvements added regularly as part of my learning journey.
-
-### Current Features:
-- **Add New Contact**: Users can add a contact with their name, phone number, and address.
-- **View Contacts**: Displays a list of all saved contacts with expandable details for each contact.
-- **UI Elements**: The app includes intuitive UI elements such as a `TabBar`, `ExpansionTile`, `TextField`, and `ListView`.
+> _“Small steps today, bigger milestones tomorrow.”_ 🚀  
+> This app is part of my ongoing journey to learn and improve in Flutter development.
 
 ---
 
-### File Structure and Flow
+## 🚀 Overview
 
-1. **Main App Logic**:
-   - The main logic for adding contacts and managing the app’s navigation resides in `main.dart`. This file contains the basic structure of the app and manages the two main functionalities—adding contacts and viewing saved contacts.
-
-2. **Displaying Contacts**:
-   - `show.dart` is responsible for displaying the saved contacts in an interactive, expandable list. Users can view detailed information for each contact by tapping on their name, which reveals their phone number and address.
-
-The structure and features of the app are dynamic, so as I learn more about Flutter, I plan to continue updating the app with new functionality and screens.
+The **Contact Book App** is a Flutter project built to manage and view contacts in a clean, simple interface. It allows users to add, view, and now search contacts. As a self-learning project, this app will keep growing with new features and best practices I learn along the way.
 
 ---
 
-### How the Files Work Together
+## 📝 Update Log
 
-- **Dynamic Data Handling**: 
-  - The app dynamically stores contact data in a `Map`, which is shared across different parts of the app. As new contacts are added, the data is updated and reflected in the contact list.
-  
-- **Navigation Between Screens**:
-  - The app features a simple tabbed interface (`TabBar`) to switch between adding a new contact and viewing the list of existing contacts.
+### 🔖 Version 2.0.0
+- Added **Search Bar** to quickly find contacts.
+- Implemented **Alphabetical Sorting** of contact list.
+- Created a new **Contact Detail Screen** (`contactdetail.dart`) to view full info.
+- **Refactored Backend**: Switched from using a single `Map` to a `List<Map>` structure for better scalability and cleaner logic.
 
-- **UI Interactions**:
-  - Users can easily interact with the app using text fields to input new contact information and expand each contact’s tile to view more details.
-
----
-
-## What's Next? Possible Future Updates
-
-- **Add a Search Bar**: To quickly search for contacts.
-- **Edit and Delete Options**: Allow users to edit or delete a contact from the list.
-- **Contact Info Screen**: A detailed screen for each contact, showing more than just the name and phone number.
-- **Sort Contacts**: Show contacts in ascending order based on their names or other criteria.
-
-These are just a few ideas for future updates. As I progress in my Flutter journey, I will keep adding more features to enhance the app.
+### 🔖 Version 1.0.0
+- **Initial Release**: Basic Contact Book functionality with two screens:
+  - **Add Contacts**: Users can add a contact with name, phone number, and address.
+  - **View Contacts**: Displays a list of all saved contacts with expandable details for each contact.
+- **UI Elements**: Included `TabBar`, `TextField`, `ExpansionTile`, and `ListView` for navigation and displaying data.
 
 ---
 
-## Conclusion
+## ✅ Current Features
 
-This project is a stepping stone in my journey to learn Flutter. The app’s functionality will continue to evolve as I learn new concepts and features. Keep an eye on future updates to track the development step-by-step. Thank you for being a part of this learning process!
+- ➕ **Add Contact**: Users can add a contact with name, phone number, and address.
+- 📄 **View Contacts**: See all saved contacts using a clean ListView with expandable tiles.
+- 🔍 **Search Bar**: Quickly find contacts by typing their name.
+- 🔠 **Alphabetical Sorting**: Contacts are displayed in A–Z order automatically.
+- 📇 **Contact Detail Screen**: Tap a contact to view their full information on a dedicated screen.
+- 🛠️ **Backend Structure Improved**: Moved from a single `Map` to a `List<Map>` approach for better data handling and scalability.
 
 ---
 
+## 🗂️ File Structure & Flow
+
+### 1. `main.dart`
+- Contains the app's core structure, navigation, and initial tab layout (Add/View).
+
+### 2. `show.dart`
+- Displays all added contacts with search functionality and A–Z sorting.
+- Uses `ExpansionTile` to show contact info inside a scrollable list.
+
+### 3. `contactdetail.dart` *(New!)*
+- A new screen that shows the full details of a selected contact.
+
+---
+
+## 🔧 Data Handling
+
+- Contact data is now handled using a `List<Map>` structure.
+- This makes the code cleaner, more readable, and easier to manage as the app grows.
+- No database is used yet; everything runs in memory for simplicity while learning.
+
+---
+
+## 🔮 What's Coming Next?
+
+- ✏️ Edit Contacts: Modify an existing contact’s info.
+- 🗑️ Delete Contacts: Remove contacts from the list.
+- 🔄 Update Contact Logic: Ensure real-time updates in the UI.
+- 🌊 Splash Screen: Improve first-time user experience.
+- 🖌️ UI/UX Enhancements: Cleaner design and animations.
+
+---
+
+## 📌 Conclusion
+
+This app is more than just a project—it's a reflection of my Flutter learning process.  
+With each update, I’m aiming to apply new concepts and make the app more powerful.
+
+Thanks for checking it out, and feel free to explore the code or leave suggestions!
+
+---
+
+## 🔗 GitHub
+
+Feel free to clone, fork, or contribute!  
+[GitHub Repo]((https://github.com/sultanahmad1412004/My-Flutter-Journey)
+
+---
