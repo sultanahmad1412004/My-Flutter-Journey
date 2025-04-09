@@ -18,7 +18,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final Map contacts = {"names": [], "phone": [], "address": []};
+  final List contacts = [];
   final name = TextEditingController();
   final phone_no = TextEditingController();
   final addres = TextEditingController();
@@ -58,10 +58,12 @@ class _HomeState extends State<Home> {
                   backgroundColor: Color(0xFFff0030),
                   radius: 42,
                   child: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                      "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
-                    ),
                     radius: 40,
+                    backgroundColor: Colors.white,
+                    child: Icon(Icons.person,
+                    color: Colors.grey,
+                      size: 65,
+                    ),
                   ),
                 ),
                 SizedBox(height: 15),
@@ -127,9 +129,7 @@ class _HomeState extends State<Home> {
 
                           setState(() {
                             if(name.text.isNotEmpty && phone_no.text.isNotEmpty && addres.text.isNotEmpty) {
-                              contacts["names"]?.add(name.text);
-                              contacts["phone"]?.add(phone_no.text);
-                              contacts["address"]?.add(addres.text);
+                              contacts.add({"names":name.text,"number":phone_no.text,"addres":addres.text});
 
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
