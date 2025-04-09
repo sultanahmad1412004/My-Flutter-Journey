@@ -1,40 +1,87 @@
 import 'package:flutter/material.dart';
+import 'ContactDetail.dart';
 
-class showContact extends StatelessWidget {
-  final Map contacts;
+class showContact extends StatefulWidget {
+  final List contacts;
   // Constructor to receive the Map
   showContact({required this.contacts});
 
   @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: contacts["names"]?.length ?? 0,
-      itemBuilder: (context, index) {
-        return ExpansionTile(
+  _showContactState createState() => _showContactState();
+}
 
-          title: Text(contacts["names"]?[index] ?? ""),
-          iconColor: Colors.green,
-          collapsedIconColor:Color(0xFFff0030),
-          childrenPadding: EdgeInsets.symmetric(horizontal: 12),
-          leading: CircleAvatar(
-            backgroundColor: Colors.green,
-            child: Text(contacts["names"][index][0].toString().toUpperCase(),style: TextStyle(
-              fontSize: 20,
-            ),),
+class _showContactState extends State<showContact> {
+  List filteredContacts = [];
+
+  @override
+  void initState() {
+    super.initState();
+    filteredContacts = widget.contacts;
+    sortContacts();
+  }
+
+  // Function to sort the contacts alphabetically by name
+  void sortContacts() {
+    setState(() {
+      filteredContacts.sort((a, b) => a['names'].toLowerCase().compareTo(b['names'].toLowerCase()));
+    });
+  }
+
+  void search(String data) {
+    setState(() {
+      filteredContacts = widget.contacts
+          .where((contact) => contact['names'].toLowerCase().contains(data.toLowerCase()))
+          .toList();
+      sortContacts();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(height: 15),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          child: TextField(
+            style: TextStyle(fontSize: 20),
+            onChanged: (value) => search(value),
+            decoration: InputDecoration(
+              suffixIcon: Icon(Icons.search,color: Color(0xFFff0030),size: 35,),
+              hintText: "Search",
+            ),
           ),
-          trailing: Icon(Icons.call),
-          children: [
-            ListTile(
-              leading: Icon(Icons.phone,color: Color(0xFFff0030),),
-              title: Text("Phone: ${contacts["phone"]?[index]}"),
-            ),
-            ListTile(
-              leading: Icon(Icons.location_pin,color: Color(0xFFff0030),),
-              title: Text("Address: ${contacts["address"]?[index]}"),
-            ),
-          ],
-        );
-      },
+        ),
+        SizedBox(height: 10),
+        Expanded(
+          child: ListView.builder(
+            itemCount: filteredContacts.length,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  // Navigate to the new screen and pass the index
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ContactDetailScreen(
+                        index: index,
+                        contact: filteredContacts[index],
+                      ),
+                    ),
+                  );
+                },
+                child: ListTile(
+                  leading: CircleAvatar(
+                    child: Text(filteredContacts[index]['names'][0]),
+                  ),
+                  title: Text(filteredContacts[index]['names']),
+                  trailing: Icon(Icons.call),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }
